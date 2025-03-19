@@ -1,0 +1,44 @@
+services:
+  hw-control:
+    build:
+      context: .
+      dockerfile: ./hw-control/Dockerfile
+    container_name: hw-control
+    tty: true
+    networks:
+      - cdim-net
+    ports:
+      - 8000:8000
+      - 3500:3500
+    volumes:
+      - hw-control-config:/opt/cdim/hw-control/config
+      - hw-control-data:/opt/cdim/hw-control/data
+      - hw-control-logs:/var/log/cdim
+    logging:
+      options:
+        max-size: 50m
+
+  hw-control-dapr:
+    image: daprio/daprd:edge
+    container_name: hw-control-dapr
+    command:
+      [
+        "./daprd",
+        "-app-id","hw-control",
+        "-app-port","8000",
+        "-dapr-http-port","3500",
+        "-placement-host-address","placement:50006"
+      ]
+    network_mode: "service:hw-control"
+    logging:
+      options:
+        max-size: 50m
+
+networks:
+  cdim-net:
+    external: true
+
+volumes:
+  hw-control-config:
+  hw-control-data:
+  hw-control-logs:

@@ -1,0 +1,9 @@
+[submodule "hw-control/hw-control"]
+	path = hw-control/hw-control
+	url = https://github.com/project-cdim/hw-control.git
+[submodule "hw-control/fm-plugin-reference"]
+	path = hw-control/fm-plugin-reference
+	url = https://github.com/project-cdim/fm-plugin-reference.git
+[submodule "hw-control/oob-plugin-reference"]
+	path = hw-control/oob-plugin-reference
+	url = https://github.com/project-cdim/oob-plugin-reference.git
