@@ -1,6 +1,6 @@
 ---
 module: oob_redfish.redfish_sample_plugin
-class: OobRedfishPlugin
+class: OOBRedfishPlugin
 specific_data:
     url: http://hw-emulator:5000
     manager: BMC-1

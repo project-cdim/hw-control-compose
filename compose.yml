@@ -14,6 +14,8 @@ services:
       - hw-control-config:/opt/cdim/hw-control/config
       - hw-control-data:/opt/cdim/hw-control/data
       - hw-control-logs:/var/log/cdim
+    sysctls:
+      net.ipv4.tcp_tw_reuse: 1
     logging:
       options:
         max-size: 50m
